@@ -1,3 +1,5 @@
+This plugin enables users to display the geolocation informaton, such as country, region, city, derived from the IP addresses.
+
 Instructions
 ============
 
