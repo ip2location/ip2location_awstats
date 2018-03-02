@@ -19,8 +19,8 @@ Instructions
 Dependencies
 ============
 It's recommended to use IP2Location DB3 which included country, region, and city information.
-* IP2Location LITE (Free): http://lite.ip2location.com
-* IP2Location Commercial (Comprehensive): http://www.ip2location.com
+* IP2Location LITE (Free): https://lite.ip2location.com
+* IP2Location Commercial (Comprehensive): https://www.ip2location.com
 
 
 IPv4 BIN vs IPv6 BIN
