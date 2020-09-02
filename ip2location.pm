@@ -55,28 +55,6 @@ sub Init_ip2location {
 	return ($checkversion?$checkversion:"$PluginHooksFunctions");
 }
 
-
-#-----------------------------------------------------------------------------
-# PLUGIN FUNCTION: GetCountryCodeByName_pluginname
-# UNIQUE: YES (Only one plugin using this function can be loaded)
-# GetCountryCodeByName is called to translate a host name into a country name.
-#-----------------------------------------------------------------------------
-sub GetCountryCodeByName_ip2location {
-    my $param="$_[0]";
-	# <-----
-	my $res=$TmpDomainLookup{$param}||'';
-	if (! $res) {
-		($res,undef)=$obj->LookUp($param);
-		if ($res !~ /\w\w/) { $res='ip'; }
-		else { $res=lc($res); }
-		$TmpDomainLookup{$param}=$res;
-		if ($Debug) { debug("  Plugin ip2location: GetCountryCodeByName for $param: $res",5); }
-	}
-	elsif ($Debug) { debug("  Plugin ip2location: GetCountryCodeByName for $param: Already resolved to $res",5); }
-	# ----->
-	return $res;
-}
-
 #-----------------------------------------------------------------------------
 # PLUGIN FUNCTION: ShowInfoHost_pluginname
 # UNIQUE: NO (Several plugins using this function can be loaded)
@@ -107,15 +85,37 @@ sub ShowInfoHost_ip2location {
 		print "<th width=\"80\">Country</th>";
 		print "<th width=\"150\">Region</th>";
 		print "<th width=\"150\">City</th>";
+		print "<th width=\"150\">ZIP Code</th>";
+		print "<th width=\"150\">Time Zone</th>";
 	}
 	elsif ($param) {
 		my $country_long = $obj->get_country_long($param);
 		my $region  = $obj->get_region($param);
 		my $city = $obj->get_city($param);
+		my $zip_code = $obj->get_zipcode($param);
+		my $time_zone = $obj->get_timezone($param);
+
+		if ($region =~ /unavailable|supported/) {
+			$region = "NA";
+		}
+
+		if ($city =~ /unavailable|supported/) {
+			$city = "NA";
+		}
+
+		if ($zip_code =~ /unavailable|supported/) {
+			$zip_code = "NA";
+		}
+
+		if ($time_zone =~ /unavailable|supported/) {
+			$time_zone = "NA";
+		}
 
 		print "<td><span style=\"color: #$color_other\">$country_long</span></td>";
 		print "<td><span style=\"color: #$color_other\">$region</span></td>";
 		print "<td><span style=\"color: #$color_other\">$city</span></td>";
+		print "<td><span style=\"color: #$color_other\">$zip_code</span></td>";
+		print "<td><span style=\"color: #$color_other\">$time_zone</span></td>";
 	}
 	else {
 		print "<td>&nbsp;</td>";

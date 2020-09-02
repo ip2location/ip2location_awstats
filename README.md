@@ -1,4 +1,4 @@
-This plugin enables users to display the geolocation informaton, such as country, region, city, derived from the IP addresses.
+This plugin enables users to display the geolocation information, such as country, region, city, ZIP code and time zone derived from the IP addresses.
 
 Instructions
 ============
@@ -18,7 +18,7 @@ Instructions
    
 Dependencies
 ============
-It's recommended to use IP2Location DB3 which included country, region, and city information.
+It's recommended to use IP2Location DB11 which included country, region, and city information.
 * IP2Location LITE (Free): https://lite.ip2location.com
 * IP2Location Commercial (Comprehensive): https://www.ip2location.com
 
