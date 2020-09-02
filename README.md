@@ -18,7 +18,7 @@ Instructions
    
 Dependencies
 ============
-It's recommended to use IP2Location DB11 which included country, region, and city information.
+It's recommended to use IP2Location DB11 which includes country, region, city, ZIP code and time zone information.
 * IP2Location LITE (Free): https://lite.ip2location.com
 * IP2Location Commercial (Comprehensive): https://www.ip2location.com
 
